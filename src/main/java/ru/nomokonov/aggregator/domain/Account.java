@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -32,6 +33,16 @@ public class Account  {
     @ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn (name ="profile_id")
     private User user;
+    @OneToMany ( mappedBy = "account",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Counter> counters;
+
+    public List<Counter> getCounters() {
+        return counters;
+    }
+
+    public void setCounters(List<Counter> counters) {
+        this.counters = counters;
+    }
 
     public User getUser(){
         return this.user;

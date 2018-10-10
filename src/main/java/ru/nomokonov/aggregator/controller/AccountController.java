@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.nomokonov.aggregator.domain.Account;
+import ru.nomokonov.aggregator.domain.Counter;
 import ru.nomokonov.aggregator.domain.User;
 import ru.nomokonov.aggregator.repos.AccountRepo;
 import ru.nomokonov.aggregator.repos.UserRepo;
@@ -113,6 +114,22 @@ public class AccountController {
             model.addAttribute("account", accountFromDb);
             return "redirect:/account/"+accountFromDb.getId();
         }
+    }
+
+    @GetMapping("{account_id}/counter/new")
+    public String NewCountAccount(@AuthenticationPrincipal User user,
+                              @PathVariable(value="account_id") Long  account_id,
+                              Model model) {
+
+        model.addAttribute("action", "new");
+
+        Account accountFromDb = accountService.findOneByIdAndUser(account_id, user);
+        model.addAttribute("account", accountFromDb);
+        model.addAttribute("count", new Counter());
+        if(accountFromDb == null )
+            return "account";
+
+        return "counterEdit";
     }
 
 }

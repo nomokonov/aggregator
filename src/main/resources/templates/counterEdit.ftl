@@ -7,7 +7,7 @@
 </#if>
 <#if action == "edit">
 <H2>Редактирование счетчика  ${account.account_number! }</H2>
-<form action="/account/${account.id!}/count" method="post"  class="container"  >
+<form action="/account/${account.id!}/counter/add" method="post"  class="container"  >
 </#if>
             <div class="form-group">
                 <label for="count_name_input" >Наименование счетчика ( напр. Водоканал)</label>
@@ -15,8 +15,8 @@
                 <input class="form-control"  type="text" name="count_name" value="${count.name!}" placeholder="Наименование счетчика " id="count_name_input">
             </div>
             <div class="form-group">
-                <label for="count_unit_input" >Еденица измерения показаний счетчика</label>
-                <input class="form-control"  type="text" name="count_unit" value="${count.unit!}" placeholder="Еденица измерения показаний счетчика" id="count_unit_input">
+                <label for="count_unit_input" >Единица измерения показаний счетчика</label>
+                <input class="form-control"  type="text" name="count_unit" value="${count.unit!}" placeholder="Единица измерения показаний счетчика" id="count_unit_input">
             </div>
 
             <button type="submit" class="btn btn-primary">Сохранить</button>

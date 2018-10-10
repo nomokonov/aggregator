@@ -21,7 +21,7 @@
 </div>
     <H3>Счетчики:</H3>
 <div>
-    <a class="btn btn-primary btn-xs" href="/account/${account.account_number}/counter/new" role="button">Добавить счетчик</a>
+    <a class="btn btn-primary btn-xs" href="/account/${account.id}/counter/new" role="button">Добавить счетчик</a>
 </div>
     <div class="card-columns">
         <div class="card my-3">
