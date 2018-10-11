@@ -132,4 +132,24 @@ public class AccountController {
         return "counterEdit";
     }
 
+    @PostMapping ("{account_id}/counter/add")
+    public String SaveCounter(@AuthenticationPrincipal User user,
+                              @PathVariable(value="account_id") Long  account_id,
+                              @RequestParam String  counter_name,
+                              @RequestParam String  counter_unit,
+                              Model model)     {
+
+        Account accountFromDb = accountService.findOneByIdAndUser(account_id, user);
+        if(accountFromDb == null )
+            return "account";
+
+        Counter counter = new Counter();
+        counter.setName(counter_name);
+        counter.setUnit(counter_unit);
+        counter.setAccount(accountFromDb);
+        counter.setActive(true);
+
+        model.addAttribute("account", accountFromDb);
+        return "redirect:account/"+ accountFromDb.getId().toString();
+    }
 }
