@@ -18,7 +18,7 @@
                 <label for="counter_unit_input" >Единица измерения показаний счетчика</label>
                 <input class="form-control" type="text" name="counter_unit" value="${count.unit!}" placeholder="Единица измерения показаний счетчика" id="counter_unit_input">
             </div>
-
+ <input type="hidden" value="${_csrf.token}" name="_csrf">
             <button type="submit" class="btn btn-primary">Сохранить</button>
         </form>
 

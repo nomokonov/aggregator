@@ -149,6 +149,7 @@ public class AccountController {
         counter.setAccount(accountFromDb);
         counter.setActive(true);
 
+
         model.addAttribute("account", accountFromDb);
         return "redirect:account/"+ accountFromDb.getId().toString();
     }
