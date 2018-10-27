@@ -151,6 +151,6 @@ public class AccountController {
 
 
         model.addAttribute("account", accountFromDb);
-        return "redirect:account/"+ accountFromDb.getId().toString();
+        return "redirect:/account/"+accountFromDb.getId();
     }
 }
